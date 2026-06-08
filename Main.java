@@ -1,4 +1,8 @@
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -193,6 +197,96 @@ public class Main {public static void main(String[] args) {
             
             default:
                 System.out.println(" Invalid activity!");
+                        
+        String name = "";
+        String mood = "";
+        int points = 0;
+
+        try {
+            System.out.print("Enter your name: ");
+            name = input.nextLine();
+
+            System.out.print("How are you feeling today? ");
+            mood = input.nextLine();
+
+            System.out.println("\nHello " + name + "!");
+            System.out.println("Your mood today is: " + mood);
+
+            if (mood.equalsIgnoreCase("happy")) {
+                System.out.println("Great! Keep your positive energy.");
+                points += 10;
+            } else if (mood.equalsIgnoreCase("stress")) {
+                System.out.println("Take a short break and relax.");
+                points += 5;
+            } else {
+                System.out.println("Thank you for sharing your mood.");
+                points += 3;
+            }
+
+            System.out.print("\nDid you sleep at least 6 hours? (yes/no): ");
+            String sleep = input.nextLine();
+
+            if (sleep.equalsIgnoreCase("yes")) {
+                points += 10;
+            }
+
+            System.out.print("Did you study today? (yes/no): ");
+            String study = input.nextLine();
+
+            if (study.equalsIgnoreCase("yes")) {
+                points += 10;
+            }
+
+            System.out.println("\nTotal Wellness Points: " + points);
+
+            saveRecord(name, mood, points);
+            viewRecord();
+
+        } catch (Exception e) {
+            System.out.println("Invalid input. Please try again.");
+        }
+
+        input.close();
+    }
+            
+    public static void saveRecord(String name, String mood, int points) {
+        try {
+            FileWriter fw = new FileWriter("wellness_record.txt", true);
+
+            fw.write("Name: " + name +
+                    " | Mood: " + mood +
+                    " | Points: " + points + "\n");
+
+            fw.close();
+
+            System.out.println("Record saved successfully.");
+
+        } catch (IOException e) {
+            System.out.println("Error saving record.");
+        }
+    }
+
+    public static void viewRecord() {
+        try {
+            File file = new File("wellness_record.txt");
+            Scanner read = new Scanner(file);
+
+            System.out.println("\n=== WELLNESS RECORD ===");
+
+            while (read.hasNextLine()) {
+                System.out.println(read.nextLine());
+            }
+
+            read.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("No previous record found ");
+        }
+    }
+}
+
+    
+        
         }
     }
  }
