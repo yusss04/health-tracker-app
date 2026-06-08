@@ -219,7 +219,7 @@ public class Main {public static void main(String[] args) {
             
             input.nextLine(); 
             
-            
+            // part member 4 : Najwa
             String name = "";
             String mood = "";
             int points = 0;
@@ -290,7 +290,7 @@ public class Main {public static void main(String[] args) {
     }
 
     
-    public static class FileManager {
+    public static class FileManager { 
         public void loadData() {
             System.out.println("[System] Old data loaded successfully.");
         }
