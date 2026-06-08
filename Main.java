@@ -29,7 +29,7 @@ public class Main {public static void main(String[] args) {
             System.out.println("5. Exit Application");
             System.out.print("Choose an option (1-5): ");
             
-            int choice = scanner.nextInt();
+            int choice = input.nextInt();
             
             switch (choice) {
                 case 1:
@@ -62,10 +62,10 @@ public class Main {public static void main(String[] args) {
             }
         }
         
-        scanner.close();
+        input.close();
     }
 
-  public class Gamification {
+  public static class Gamification {
 
     Scanner input = new Scanner(System.in);
     
@@ -196,7 +196,9 @@ public class Main {public static void main(String[] args) {
             break;
             
             default:
-                System.out.println(" Invalid activity!");
+                System.out.println(" Invalid activity!"); return;
+
+        input.nextLine();
                         
         String name = "";
         String mood = "";
@@ -246,10 +248,9 @@ public class Main {public static void main(String[] args) {
             System.out.println("Invalid input. Please try again.");
         }
 
-        input.close();
     }
             
-    public static void saveRecord(String name, String mood, int points) {
+    public void saveRecord(String name, String mood, int points) {
         try {
             FileWriter fw = new FileWriter("wellness_record.txt", true);
 
@@ -266,7 +267,7 @@ public class Main {public static void main(String[] args) {
         }
     }
 
-    public static void viewRecord() {
+    public void viewRecord() {
         try {
             File file = new File("wellness_record.txt");
             Scanner read = new Scanner(file);
@@ -287,7 +288,4 @@ public class Main {public static void main(String[] args) {
 
     
         
-        }
-    }
- }
-}
+       
