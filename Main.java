@@ -12,7 +12,7 @@ public class Main {public static void main(String[] args) {
         Gamification rewards = new Gamification();
         FileManager fileManager = new FileManager();
         
-        // Contoh: Auto-load data lama semasa app baru dibuka (Tugas Member 4)
+        
         System.out.println("Loading data... Please wait.");
         fileManager.loadData();
         
@@ -32,37 +32,25 @@ public class Main {public static void main(String[] args) {
             int choice = input.nextInt();
             
             switch (choice) {
-                case 1:
-                    // Panggil fungsi dalam WaterTracker.java (Tugas Member 3)
-                    water.displayWaterMenu();
+                case 1: water.displayWaterMenu();
                     break;
                     
-                case 2:
-                    // Panggil fungsi dalam SleepTracker.java (Tugas Member 3)
-                    sleep.displaySleepMenu();
+                case 2: sleep.displaySleepMenu();
                     break;
                     
-                case 3:
-                    // Panggil fungsi dalam Gamification.java (Tugas Member 2)
-                    rewards.displayRewardsMenu();
+                case 3: rewards.displayRewardsMenu();
                     break;
                     
-                case 4:
-                    // Panggil fungsi dalam FileManager.java (Tugas Member 4)
-                    fileManager.saveData();
+                case 4: fileManager.saveData();
                     break;
                     
-                case 5:
-                    System.out.println("\nThank you for using IIUM Health Tracker. Stay healthy! Bye.");
+                case 5: System.out.println("\nThank you for using IIUM Health Tracker. Stay healthy! Bye.");
                     running = false;
                     break;
                     
-                default:
-                    System.out.println(" Invalid option! Please choose between 1 to 5.");
+                default: System.out.println(" Invalid option. Please choose between 1 to 5.");
             }
         }
-        
-        input.close();
     }
 
         public static class WaterTracker {
