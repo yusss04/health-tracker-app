@@ -199,7 +199,89 @@ public class Main {public static void main(String[] args) {
                 System.out.println(" Invalid activity!"); return;
 
         input.nextLine();
-                        
+            public static void displayWaterMenu() {
+
+        double[] waterIntake = new double[7];
+
+        System.out.println("\n========== WATER TRACKER ==========");
+
+        for (int i = 0; i < 7; i++) {
+
+            System.out.print("Enter water intake for Day " + (i + 1) + " (litres): ");
+            waterIntake[i] = input.nextDouble();
+        }
+
+        calculateWater(waterIntake);
+    }
+
+    public static void calculateWater(double[] waterIntake) {
+
+        double totalWater = 0;
+
+        for (int i = 0; i < 7; i++) {
+            totalWater += waterIntake[i];
+        }
+
+        double averageWater = totalWater / 7;
+
+        System.out.println("\nAverage water intake: " + averageWater + " L");
+
+        if (averageWater >= 2) {
+
+            System.out.println("Hydration Status: GOOD ");
+
+        } else if (averageWater >= 1.5) {
+
+            System.out.println("Hydration Status: AVERAGE ");
+
+        } else {
+
+            System.out.println("Hydration Status: POOR ");
+        }
+    }
+
+    // ================= SLEEP TRACKER =================
+
+    public static void displaySleepMenu() {
+
+        double[] sleepHours = new double[7];
+
+        System.out.println("\n========== SLEEP TRACKER ==========");
+
+        for (int i = 0; i < 7; i++) {
+
+            System.out.print("Enter sleep hours for Day " + (i + 1) + ": ");
+            sleepHours[i] = input.nextDouble();
+        }
+
+        calculateSleep(sleepHours);
+    }
+
+    public static void calculateSleep(double[] sleepHours) {
+
+        double totalSleep = 0;
+
+        for (int i = 0; i < 7; i++) {
+            totalSleep += sleepHours[i];
+        }
+
+        double averageSleep = totalSleep / 7;
+
+        System.out.println("\nAverage sleep hours: " + averageSleep);
+
+        if (averageSleep >= 8) {
+
+            System.out.println("Sleep Quality: GOOD ");
+
+        } else if (averageSleep >= 6) {
+
+            System.out.println("Sleep Quality: AVERAGE ");
+
+        } else {
+
+            System.out.println("Sleep Quality: POOR ");
+        }
+    }            
         String name = "";
         String mood = "";
         int points = 0;
@@ -249,6 +331,7 @@ public class Main {public static void main(String[] args) {
         }
 
     }
+           
             
     public void saveRecord(String name, String mood, int points) {
         try {
